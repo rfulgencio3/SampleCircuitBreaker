@@ -24,7 +24,7 @@ public class MessagePublisherServiceTests
 
         _configurationMock.Setup(x => x.GetSection("RabbitMqSettings")).Returns(rabbitMqSection.Object);
 
-        _messagePublisherService = new MessagePublisherService(new HttpClient(), _configurationMock.Object);
+        _messagePublisherService = new MessagePublisherService(_configurationMock.Object);
     }
 
     [Fact]
