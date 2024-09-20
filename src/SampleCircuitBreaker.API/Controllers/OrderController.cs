@@ -22,6 +22,10 @@ public class MessageController : ControllerBase
         var message = JsonSerializer.Serialize(inputModel);
         await _messagePublisherService.PublishAsync("defaultQueue", message);
 
-        return Ok(new { Status = "Message published successfully" });
+        return Ok(new
+        {
+            Status = "Message published successfully",
+            Message = $"Order: {inputModel.ToString()}"
+        });
     }
 }
